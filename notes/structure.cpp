@@ -63,6 +63,7 @@ typedef struct game {
 
 typedef struct tags {
 	unsigned char **tagged;
+	char **direction;
 	unsigned int **cost;
 	int **parent;
 	unsigned int length, width;
@@ -108,21 +109,21 @@ int main(int argc, char const *argv[]) {
 
 	untagGraph(game->gridGraph);
 
-	createEdge(game->gridGraph, (Position){.x = 0, .y = 1}, (Position){.x = 0, .y = 0});
-	createEdge(game->gridGraph, (Position){.x = 0, .y = 0}, (Position){.x = 1, .y = 0});
-	createEdge(game->gridGraph, (Position){.x = 0, .y = 1}, (Position){.x = 1, .y = 1});
+	 createEdge(game->gridGraph, (Position){.x = 0, .y = 1}, (Position){.x = 0, .y = 0});
+	 createEdge(game->gridGraph, (Position){.x = 0, .y = 0}, (Position){.x = 1, .y = 0});
+	 createEdge(game->gridGraph, (Position){.x = 0, .y = 1}, (Position){.x = 1, .y = 1});
 	createEdge(game->gridGraph, (Position){.x = 1, .y = 1}, (Position){.x = 1, .y = 2});
-	createEdge(game->gridGraph, (Position){.x = 2, .y = 1}, (Position){.x = 2, .y = 0});
+	 createEdge(game->gridGraph, (Position){.x = 2, .y = 1}, (Position){.x = 2, .y = 0});
 	createEdge(game->gridGraph, (Position){.x = 1, .y = 2}, (Position){.x = 0, .y = 2});
-	createEdge(game->gridGraph, (Position){.x = 1, .y = 1}, (Position){.x = 2, .y = 1});
-	// createEdge(game->gridGraph, (Position){.x = 2, .y = 1}, (Position){.x = 2, .y = 2});
-	// createEdge(game->gridGraph, (Position){.x = 2, .y = 0}, (Position){.x = 3, .y = 0});
-	// createEdge(game->gridGraph, (Position){.x = 2, .y = 2}, (Position){.x = 3, .y = 2});
-	// createEdge(game->gridGraph, (Position){.x = 3, .y = 2}, (Position){.x = 3, .y = 1});
+	 createEdge(game->gridGraph, (Position){.x = 1, .y = 1}, (Position){.x = 2, .y = 1});
+	createEdge(game->gridGraph, (Position){.x = 2, .y = 1}, (Position){.x = 2, .y = 2});
+	createEdge(game->gridGraph, (Position){.x = 2, .y = 0}, (Position){.x = 3, .y = 0});
+	createEdge(game->gridGraph, (Position){.x = 2, .y = 2}, (Position){.x = 3, .y = 2});
+	createEdge(game->gridGraph, (Position){.x = 3, .y = 2}, (Position){.x = 3, .y = 1});
 
-	printf("Distance = %d\n", getDist(game->gridGraph, (Position){.x = 1, .y = 1, .qPosition = 2}, (Position){.x = 3, .y = 1, .qPosition = 2}));
+	printf("Distance = %d\n", getDist(game->gridGraph, (Position){.x = 3, .y = 2, .qPosition = 0}, (Position){.x = 0, .y = 2, .qPosition = 2}));
 
-	printf("Length = %d\n", getLength(game->gridGraph, (Position){.x = 1, .y = 0}, 0));
+	printf("Length = %d\n", getLength(game->gridGraph, (Position){.x = 1, .y = 1}, 2));
 
 	showGraph(game->gridGraph);
 
@@ -176,15 +177,18 @@ Tags *createTags(unsigned int length, unsigned int width) {
 	newTags->width = width;
 
 	newTags->tagged = (unsigned char **)malloc(sizeof(unsigned char *) * length);
+	newTags->direction = (char **)malloc(sizeof(char *) * length);
 	newTags->cost = (unsigned int **)malloc(sizeof(unsigned int *) * length);
 	newTags->parent = (int **)malloc(sizeof(int *) * length);
 	for (int i = 0; i < length; ++i) {
 		newTags->tagged[i] = (unsigned char *)malloc(sizeof(unsigned char) * width);
+		newTags->direction[i] = (char *)malloc(sizeof(char) * width);
 		newTags->cost[i] = (unsigned int *)malloc(sizeof(unsigned int) * width);
 		newTags->parent[i] = (int *)malloc(sizeof(int) * width);
 
 		for (int j = 0; j < width; ++j) {
 			newTags->tagged[i][j] = 0;
+			newTags->direction[i][j] = -1;
 			newTags->cost[i][j] = 0xFFFF;
 			newTags->parent[i][j] = -1;
 		}
@@ -210,6 +214,17 @@ void printTags(Tags *tags) {
 				printf("(%2d, %2d) ", tags->parent[i][j]%tags->width, (int)(tags->parent[i][j]/tags->width));
 			} else {
 				printf("(%2d, %2d) ", -1, -1);
+			}
+		}
+		printf("\n");
+	}
+	printf("DIRECTION: \n");
+	for(i = 0; i < tags->length; ++i) {
+		for(j = 0; j < tags->width; ++j) {
+			if(tags->direction[i][j] != -1) {
+				printf("%2d ", tags->direction[i][j]);
+			} else {
+				printf("%2d ", -1);
 			}
 		}
 		printf("\n");
@@ -273,7 +288,6 @@ char getDirection(Position nodeA, Position nodeB) { /// ABR
 	} else {
 		return -1;
 	}
-
 }
 
 unsigned char isValidPosition(GridGraph *gridGraph, Position pos) {
@@ -296,16 +310,20 @@ unsigned int getDist(GridGraph *gridGraph, Position src, Position dst) {
 }
 
 unsigned int getDistRec(GridGraph *gridGraph, Tags *tags, Position src, Position dst) {
-	int i, j, minDir, curDist;
-	int minDist;
-	char isSrcFree, isNextFree;
+	int i, j, minDir, curDist, branchLen;
+	// int minDist;
+	char isSrcFree, isNextFree, firstBranch;
 
-	minDir = 0;
-	minDist = 0xFFFF;
+	curDist = 0;
+	minDir = -1;
+	firstBranch = -1;
+	// minDist = 0xFFFF;
+	if(src.x == 1 && src.y == 1) {
+		printf("cN = (%d, %d, %d)\n", src.x, src.y, src.qPosition);
+	}
 
-	/// found node OR node already visited
-	if(src.x == dst.x && src.y == dst.y || tags->tagged[src.y][src.x] == GREY) {
-		curDist = 0;
+	/// found node
+	if(src.x == dst.x && src.y == dst.y) {
 		// printf("FOUND!\n");
 		// printf("(%d, %d) = (%d)\n", src.x, src.y, tags->parent[src.y][src.x]);
 		/// Add remaining branches in the node
@@ -321,14 +339,15 @@ unsigned int getDistRec(GridGraph *gridGraph, Tags *tags, Position src, Position
 			/// save cost
 			tags->cost[src.y][src.x] = curDist;
 		}
+		tags->direction[src.y][src.x] = -1;
 
 		return curDist;
 	}
 
 	/// if current node is free = grey, otherwise it's black
-	tags->tagged[src.y][src.x] = (isSrcFree = isFreeNode(gridGraph, src)) ? GREY : BLACK;
-	tags->cost[src.y][src.x] = 0;
-
+	// tags->tagged[src.y][src.x] = (isSrcFree = isFreeNode(gridGraph, src)) ? GREY : BLACK;
+	// tags->tagged[src.y][src.x] = (isSrcFree = isFreeNode(gridGraph, src)) ? WHITE : BLACK;
+	// tags->cost[src.y][src.x] = 0;
 	/// for each direction
 	for(i = 0; i < 4; ++i) {
 		curDist = 0;
@@ -340,6 +359,9 @@ unsigned int getDistRec(GridGraph *gridGraph, Tags *tags, Position src, Position
 		/// if adjacent node is a valid position
 		if(isValidPosition(gridGraph, nextNode)) {
 
+			// if(tags->parent[nextNode.y][nextNode.x] == -1)
+			// 	tags->parent[nextNode.y][nextNode.x] = src.y * gridGraph->width + src.x;
+
 			/// get if next node is free
 			isNextFree = isFreeNode(gridGraph, nextNode);
 			// printf("nN = (%d, %d, %d)\n", nextNode.x, nextNode.y, nextNode.qPosition);
@@ -350,29 +372,46 @@ unsigned int getDistRec(GridGraph *gridGraph, Tags *tags, Position src, Position
 
 				/// if next node is not tagged black
 				if(tags->tagged[nextNode.y][nextNode.x] != BLACK) {
+					// minDir = (minDir == -1) ? i : -1;
 					// printf("tagged = %d\n", gridGraph->hamNodes[nextNode.y][nextNode.x]->tagged);
 					for(j = src.qPosition; j != (nextNode.qPosition + 1) % 4; ++j %= 4) {
-						curDist += 2 * getLength(gridGraph, src, (j + 1) % 4);
-						//printf("qDir = %d\n", (j + 1) % 4);
-						//printf("len = %d\n", getLength(gridGraph, src, (j + 1) % 4));
+
+						curDist += 2 * (branchLen = getLength(gridGraph, src, (j + 1) % 4));
+
+						if(branchLen && firstBranch == -1 && gridGraph->hamNodes[src.y][src.x]->edges[i])
+							firstBranch = (j + 1) % 4;
+
+						if(src.x == 1 && src.y == 1) {
+							printf("j = %d\n", j);
+							printf("cN = (%d, %d, %d)\n", src.x, src.y, src.qPosition);
+							printf("qDir = %d\n", (j + 1) % 4);
+							printf("len = %d\n", branchLen);
+						}
 					}
+
+					tags->tagged[nextNode.y][nextNode.x] = BLACK;
+
 					/// get the distance recursively depth first
 					curDist += 1 + getDistRec(gridGraph, tags, nextNode, dst);
+
+					if(isNextFree)
+						tags->tagged[nextNode.y][nextNode.x] = WHITE;
 
 					// printf("minDist = %d\n", minDist);
 
 					// printf("[%d, %d]\n", curDist, minDist);
 					/// if current distance is smaller
-					/// checks if distance is equal and avoids free nodes
-					if(!(curDist == minDist && isSrcFree) && curDist <= minDist) {
-						minDist = curDist;
+					/// checks if distance is equal and avoids free nodes's paths
+					if(!(curDist == tags->cost[src.y][src.x] && isSrcFree) && curDist <= tags->cost[src.y][src.x]) {
+						tags->cost[src.y][src.x] = curDist;
+
 						minDir = i;
-						// printf("cN = (%d, %d)\n", src.x, src.y);
 						printTags(tags);
 
 						//printf("curDist = %d\n", curDist);
 						// printf("minDir = %d\n", minDir);
 						tags->parent[nextNode.y][nextNode.x] = src.y * gridGraph->width + src.x;
+						tags->direction[src.y][src.x] = (firstBranch == -1) ? minDir : firstBranch;
 					}
 				}
 			}
@@ -380,10 +419,10 @@ unsigned int getDistRec(GridGraph *gridGraph, Tags *tags, Position src, Position
 	}
 
 	tags->tagged[src.y][src.x] = BLACK;
-	tags->cost[src.y][src.x] = minDist;
 
+	// tags->cost[src.y][src.x] = minDist;
 
-	return minDist;
+	return tags->cost[src.y][src.x];
 }
 
 void getAdjacentNode(GridGraph *gridGraph, Position &adjNode, Position source, int direction) { // ABD
@@ -427,7 +466,7 @@ unsigned int getLength(GridGraph *gridGraph, Position src, int direction) {
 
 	tags = createTags(gridGraph->length, gridGraph->width);
 
-	tags->tagged[src.y][src.x] = 1;
+	tags->tagged[src.y][src.x] = BLACK;
 
 	total = 1 + getLengthRec(gridGraph, tags, nextNode);
 
@@ -442,7 +481,7 @@ unsigned int getLengthRec(GridGraph *gridGraph, Tags *tags, Position src) {
 	int i, total;
 	Position nextNode = {.x = 0, .y = 0, .qPosition = 0};
 
-	tags->tagged[src.y][src.x] = 1;
+	tags->tagged[src.y][src.x] = BLACK;
 
 	for (i = total = 0; i < 4; ++i) {
 		// printf("cN = (%d, %d)\n", src.x, src.y);
@@ -458,7 +497,10 @@ unsigned int getLengthRec(GridGraph *gridGraph, Tags *tags, Position src) {
 				// printf("A\n");
 			}
 		}
+		// printf("total = %d\n", total);
 	}
+
+	// printf("cN = (%d, %d)\n", src.x, src.y);
 
 	return total;
 }

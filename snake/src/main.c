@@ -64,17 +64,17 @@ void mainLoop(gameBoard game, Snake *snake, GridGraph *gridGraph)
 		// fprintf(f, "path = %d\n", path);
 
 		switch (checkColision(*snake, game, dir)) {
-		case DIE:
-			usleep(DELAY);
-			alive = false;
-			break;
-		case MOVE:
-			moveSnake(snake, dir, game);
-			break;
-		case GROW:
-			growSnake(snake, dir, game);
-			spawnfruit(&game);
-			break;
+			case DIE:
+				usleep(DELAY);
+				alive = false;
+				break;
+			case MOVE:
+				moveSnake(snake, dir, game);
+				break;
+			case GROW:
+				growSnake(snake, dir, game);
+				spawnfruit(&game);
+				break;
 		}
 		usleep(DELAY);
 	}

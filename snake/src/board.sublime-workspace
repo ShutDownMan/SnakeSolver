@@ -1,0 +1,778 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"node",
+				"nodeA"
+			],
+			[
+				"head",
+				"headPos"
+			],
+			[
+				"is",
+				"isFree"
+			],
+			[
+				"path",
+				"pathInfo"
+			],
+			[
+				"pri",
+				"printPathInfo"
+			],
+			[
+				"Sna",
+				"snakeHeadQPos"
+			],
+			[
+				"Grid",
+				"GridGraph"
+			],
+			[
+				"snake",
+				"snakeHeadPos"
+			],
+			[
+				"sna",
+				"snakeHeadPos"
+			],
+			[
+				"inc",
+				"inc\t#include \"…\""
+			],
+			[
+				"q",
+				"qPosition"
+			],
+			[
+				"bran",
+				"branchLen"
+			],
+			[
+				"firs",
+				"firstBranch"
+			],
+			[
+				"minD",
+				"minDir"
+			],
+			[
+				"fir",
+				"firstBranch"
+			],
+			[
+				"min",
+				"minDir"
+			],
+			[
+				"nex",
+				"nextNode"
+			],
+			[
+				"G",
+				"GREY"
+			],
+			[
+				"isFre",
+				"isNodeFree"
+			],
+			[
+				"s",
+				"sizeof"
+			],
+			[
+				"tag",
+				"tagged"
+			],
+			[
+				"ta",
+				"tags"
+			],
+			[
+				"c",
+				"char"
+			],
+			[
+				"get",
+				"getLength"
+			],
+			[
+				"Q",
+				"qPosition"
+			],
+			[
+				"pr",
+				"printf\tprintf …"
+			],
+			[
+				"minDi",
+				"minDist"
+			],
+			[
+				"getD",
+				"getDist"
+			],
+			[
+				"print",
+				"printf\tprintf …"
+			],
+			[
+				"ge",
+				"getAdjacentNode"
+			],
+			[
+				"nod",
+				"nodeB"
+			],
+			[
+				"noed",
+				"nodeB"
+			],
+			[
+				"Gri",
+				"GridGraph"
+			],
+			[
+				"food",
+				"foodQPos"
+			],
+			[
+				"grid",
+				"gridGraph"
+			],
+			[
+				"gri",
+				"gridGraph"
+			],
+			[
+				"Tree",
+				"TreeNode"
+			],
+			[
+				"WIF",
+				"WIFI_CONNECTED"
+			],
+			[
+				"FAL",
+				"FALSE"
+			],
+			[
+				"messa",
+				"message"
+			],
+			[
+				"begi",
+				"beginTransmission"
+			],
+			[
+				"che",
+				"checkWifi"
+			],
+			[
+				"WIFI",
+				"WIFI_TIMESTAMP"
+			],
+			[
+				"butt",
+				"buttonState"
+			],
+			[
+				"bu",
+				"buttonState"
+			],
+			[
+				"F",
+				"Fall"
+			],
+			[
+				"wifi",
+				"wifiConnect"
+			],
+			[
+				"WI",
+				"WIFI_CONNECTED"
+			],
+			[
+				"set",
+				"setupPins"
+			],
+			[
+				"TIMEST",
+				"ALARM_TIMESTAMP"
+			],
+			[
+				"messae",
+				"messageType"
+			],
+			[
+				"message",
+				"messageType"
+			],
+			[
+				"temp",
+				"temporalSeries"
+			],
+			[
+				"tem",
+				"temporalSeries"
+			],
+			[
+				"tempora",
+				"temporalSeries"
+			],
+			[
+				"FALL",
+				"FALL_DETECTED"
+			],
+			[
+				"tempor",
+				"temporalInfo"
+			],
+			[
+				"MCU",
+				"mcuData"
+			],
+			[
+				"S",
+				"SAM"
+			],
+			[
+				"U",
+				"UFTgyro"
+			],
+			[
+				"conver",
+				"convert_accelerometer"
+			],
+			[
+				"dou",
+				"convert_double_to_str"
+			],
+			[
+				"FA",
+				"FALL_DETECTED"
+			],
+			[
+				"UF",
+				"UFTgyro"
+			],
+			[
+				"def",
+				"define"
+			],
+			[
+				"con",
+				"convert_double_to_str"
+			],
+			[
+				"LF",
+				"LFT_TRIGGERED_TIMESTAMP"
+			],
+			[
+				"L",
+				"LFT_TRIGGERED"
+			],
+			[
+				"rad",
+				"readMCU"
+			],
+			[
+				"TEMP",
+				"TEMPORAL_BUFFER_LENGTH"
+			],
+			[
+				"acc",
+				"accelerometer_x"
+			],
+			[
+				"conv",
+				"convert_gyro"
+			],
+			[
+				"st",
+				"str"
+			],
+			[
+				"sta",
+				"stateFrom"
+			],
+			[
+				"state",
+				"stateFrom"
+			],
+			[
+				"proc",
+				"procsLen"
+			],
+			[
+				"ente",
+				"enterParaConfirmar"
+			],
+			[
+				"Aro",
+				"ArvoreBMAIS"
+			],
+			[
+				"enq",
+				"enqueue"
+			],
+			[
+				"Arvo",
+				"ArvoreBMAIS"
+			],
+			[
+				"arvore",
+				"arvore_bin"
+			],
+			[
+				"tam",
+				"tamConjD"
+			],
+			[
+				"conj",
+				"conjNome"
+			],
+			[
+				"conjD",
+				"conjDTam"
+			],
+			[
+				"img",
+				"img_rgb_path"
+			],
+			[
+				"if",
+				"ifmain\tif __name__ == '__main__'"
+			],
+			[
+				"end",
+				"endY"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"bes",
+				"bestMatch"
+			],
+			[
+				"macth",
+				"matchesScaledList"
+			],
+			[
+				"templa",
+				"template_path"
+			],
+			[
+				"old",
+				"oldY"
+			],
+			[
+				"max",
+				"maxLoc"
+			],
+			[
+				"curre",
+				"current_file_name"
+			],
+			[
+				"for",
+				"for\tFor Loop"
+			],
+			[
+				"try",
+				"try\tTry/Except"
+			],
+			[
+				"tm",
+				"tempXmlStr"
+			],
+			[
+				"typ",
+				"type1"
+			],
+			[
+				"ar",
+				"argv"
+			],
+			[
+				"de",
+				"delay"
+			],
+			[
+				"file",
+				"wallpaperFileNames"
+			],
+			[
+				"rand",
+				"randNum"
+			],
+			[
+				"dir",
+				"dir-"
+			],
+			[
+				"fileN",
+				"fileNum"
+			],
+			[
+				"wallPa",
+				"wallpaperFileNames"
+			],
+			[
+				"arg",
+				"argv"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"SSC",
+				"Set Syntax: C"
+			],
+			[
+				"Packa",
+				"Package Control: Install Package"
+			],
+			[
+				"SSC++",
+				"Set Syntax: C++"
+			],
+			[
+				"SC++",
+				"Set Syntax: C++"
+			],
+			[
+				"SSJson",
+				"Set Syntax: JSON"
+			],
+			[
+				"Package ins",
+				"Package Control: Install Package"
+			],
+			[
+				"SSJA",
+				"Set Syntax: Java"
+			],
+			[
+				"SSJSo",
+				"Set Syntax: JSON"
+			],
+			[
+				"SSJS",
+				"Set Syntax: JSON"
+			],
+			[
+				"SSPy",
+				"Set Syntax: Python"
+			],
+			[
+				"bash",
+				"Set Syntax: Bourne Again Shell (bash)"
+			],
+			[
+				"SSPY",
+				"Set Syntax: Python"
+			],
+			[
+				"py",
+				"Set Syntax: Python"
+			],
+			[
+				"SSBAS",
+				"Set Syntax: Bourne Again Shell (bash)"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Install Package Control"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/jarvis/git_src/SnakeSolver/snake/test.txt",
+		"/home/jarvis/git_src/SnakeSolver/notes/snake_path.c",
+		"/home/jarvis/git_src/SnakeSolver/snake/src/main.c",
+		"/home/jarvis/git_src/SnakeSolver/snake/src/init.c",
+		"/home/jarvis/git_src/SnakeSolver/snake/run.sh",
+		"/home/jarvis/git_src/SnakeSolver/snake/C/src/structures.h",
+		"/home/jarvis/git_src/SnakeSolver/snake/C/src/snake.h",
+		"/home/jarvis/git_src/SnakeSolver/snake/C/src/snake.c",
+		"/home/jarvis/git_src/SnakeSolver/snake/C/src/screen.h",
+		"/home/jarvis/git_src/SnakeSolver/snake/C/src/screen.c",
+		"/home/jarvis/git_src/SnakeSolver/snake/C/src/main.c",
+		"/home/jarvis/git_src/SnakeSolver/snake/C/src/input.h",
+		"/home/jarvis/git_src/SnakeSolver/snake/C/src/input.c",
+		"/home/jarvis/git_src/SnakeSolver/snake/C/src/init.h",
+		"/home/jarvis/git_src/SnakeSolver/snake/C/src/init.c",
+		"/home/jarvis/git_src/SnakeSolver/snake/C/src/board.h",
+		"/home/jarvis/git_src/SnakeSolver/snake/src/structures.h",
+		"/home/jarvis/git_src/SnakeSolver/snake/src/snake_path.h",
+		"/home/jarvis/git_src/SnakeSolver/snake/src/snake_path.c",
+		"/home/jarvis/git_src/SnakeSolver/snake/src/snake.h",
+		"/home/jarvis/git_src/SnakeSolver/snake/src/snake.c",
+		"/home/jarvis/git_src/SnakeSolver/snake/src/screen.h",
+		"/home/jarvis/git_src/SnakeSolver/snake/src/screen.c",
+		"/home/jarvis/git_src/SnakeSolver/snake/src/input.h",
+		"/home/jarvis/git_src/SnakeSolver/snake/src/input.c",
+		"/home/jarvis/git_src/SnakeSolver/snake/src/init.h",
+		"/home/jarvis/git_src/SnakeSolver/snake/src/board.h",
+		"/home/jarvis/git_src/SnakeSolver/snake/src/board.c",
+		"/home/jarvis/git_src/SnakeSolver/snake/C/src/board.c",
+		"/home/jarvis/git_src/SnakeSolver/notes/snake_path.h",
+		"/home/jarvis/git_src/SnakeSolver/notes/structure.cpp",
+		"/home/jarvis/Faculdade/Organização e Arquitetura de Computadores/Programas/7_4.c",
+		"/home/jarvis/git_src/UniProjects/C/Pessoas/nata/conj.c",
+		"/home/jarvis/Faculdade/Organização e Arquitetura de Computadores/Programas/7_3.c",
+		"/home/jarvis/Faculdade/Organização e Arquitetura de Computadores/Programas/7_2.c",
+		"/home/jarvis/Faculdade/Sistemas Digitais/Trabalho 7/exemplo.json",
+		"/home/jarvis/Faculdade/Sistemas Digitais/Trabalho 7/cod_esp8266.cpp",
+		"/home/jarvis/git_src/UniProjects/Arduino/Testes/sketch_nov27a/sketch_nov27a.ino",
+		"/home/jarvis/Faculdade/Sistemas Digitais/Trabalho 7/cod_atmega328p.cpp",
+		"/home/jarvis/Faculdade/Sistemas Digitais/Trabalho 7/backupcod.cpp",
+		"/home/jarvis/git_src/UniProjects/C++/OAC/M1/CMakeLists.txt",
+		"/home/jarvis/git_src/UniProjects/C++/OAC/M2/CMakeLists.txt",
+		"/home/jarvis/Faculdade/Calculo Numerico/notes/prova 5 note.md",
+		"/home/jarvis/Faculdade/TRMC/notes/artigo.md",
+		"/home/jarvis/Faculdade/Sistemas Digitais/Trabalho 7/Relatório LOOP.odt",
+		"/home/jarvis/Downloads/Arduino/Testes/sketch_nov27a/sketch_nov27a.ino",
+		"/home/jarvis/Faculdade/TRMC/notes/TRMC-17-09-2019.md",
+		"/home/jarvis/git_src/UniProjects/C/Pessoas/AmigaIan/in.txt",
+		"/home/jarvis/git_src/UniProjects/C/Pessoas/AmigaIan/ex4trabalho.c",
+		"/home/jarvis/Faculdade/TRMC/Artigos/10_perhealth_dbysx.pdf",
+		"/home/jarvis/.local/bin/statusbar/battery",
+		"/home/jarvis/git_src/UniProjects/C/Pessoas/Lucayan/LFAAAAAAAAAAAAAAAA.cpp",
+		"/home/jarvis/git_src/UniProjects/C/Pessoas/isabel/isabel_patricio.c",
+		"/home/jarvis/git_src/UniProjects/Bash/ArchScripts/runActiveIdleScripts.sh",
+		"/home/jarvis/git_src/UniProjects/Bash/ArchScripts/runOnCharging.sh",
+		"/home/jarvis/git_src/UniProjects/C/Pessoas/Raianny/livros.txt",
+		"/home/jarvis/git_src/UniProjects/C/AED/Trabalhos/BTree/BTree.c",
+		"/home/jarvis/git_src/UniProjects/C/Pessoas/Raianny/arvorebmais.c",
+		"/home/jarvis/git_src/UniProjects/C/Pessoas/Raianny/inicio.c",
+		"/home/jarvis/git_src/UniProjects/C/Pessoas/Raianny/arvorebmais.h",
+		"/home/jarvis/git_src/UniProjects/C/Pessoas/Douglas/in.txt",
+		"/home/jarvis/Faculdade/TRMC/notes/prova-1.md",
+		"/home/jarvis/git_src/UniProjects/C/Pessoas/Douglas/proc1.c",
+		"/home/jarvis/git_src/UniProjects/C/Pessoas/Douglas/coddele.c",
+		"/home/jarvis/Faculdade/SO/notes/Lista-1.md",
+		"/home/jarvis/git_src/UniProjects/C/Pessoas/engenharia/matrizk.c",
+		"/home/jarvis/git_src/UniProjects/C/Pessoas/Douglas/codd",
+		"/home/jarvis/git_src/UniProjects/C/Numérico/Método iterativo Gauss-Jacobi/matriz.c",
+		"/home/jarvis/git_src/UniProjects/C/Numérico/Método iterativo Gauss-Jacobi/gauss_jacobi.c",
+		"/home/jarvis/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/jarvis/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/jarvis/git_src/UniProjects/Python/Projects/TemplateMatching/test2.py",
+		"/home/jarvis/git_src/UniProjects/Python/Projects/TemplateMatching/main.py",
+		"/home/jarvis/.config/i3/config",
+		"/home/jarvis/temp/i3config",
+		"/home/jarvis/.config/i3blocks/config",
+		"/home/jarvis/git_src/TGGER/src/main/resources/static/index.html",
+		"/home/jarvis/.xinitrc",
+		"/home/jarvis/.config/cronscripts/ApptsCalendarNotification.sh",
+		"/home/jarvis/git_src/UniProjects/Python/Scripts/NumeradorDeRifas/run_all",
+		"/home/jarvis/git_src/UniProjects/Python/Scripts/NumeradorDeRifas/do_it_all",
+		"/home/jarvis/git_src/UniProjects/Python/Scripts/NumeradorDeRifas/doc_pdf_convertor",
+		"/home/jarvis/git_src/UniProjects/Python/Scripts/NumeradorDeRifas/numerador_de_rifas.py",
+		"/home/jarvis/Downloads/Scripts/NumeradorDeRifas/extracted/word/document.xml",
+		"/home/jarvis/.config/sxhkd/sxhkdrc",
+		"/home/jarvis/Downloads/Scripts/NumeradorDeRifas/numerador_de_rifas.py",
+		"/home/jarvis/Downloads/Scripts/NumeradorDeRifas/colador_de_paginas.py",
+		"/home/jarvis/git_src/UniProjects/Python/Scripts/NumeradorDeRifas/doc_pdf_convertor.py",
+		"/home/jarvis/Downloads/Scripts/NumeradorDeRifas/removedor_de_pagina.py",
+		"/home/jarvis/Downloads/Scripts/NumeradorDeRifas/temp.xml",
+		"/home/jarvis/git_src/Codigos/C/PAA/Trabalho 1/build/dados.txt",
+		"/home/jarvis/Downloads/Scripts/commandRepeater.c",
+		"/home/jarvis/git_src/UniProjects/C/Testes/enumTest.c",
+		"/home/jarvis/.config/cronscripts/TodoCalendarNotification.sh",
+		"/home/jarvis/git_src/Codigos/C/PAA/Trabalho 1/geradorDados.c",
+		"/home/jarvis/git_src/Codigos/C/PAA/Trabalho 1/ProbMochila/main.c",
+		"/home/jarvis/Documents/code/kb_layout/kb_layout.c",
+		"/home/jarvis/Downloads/Scripts/desktopChanger.py",
+		"/home/jarvis/Downloads/Scripts/wallpaperRotation.c",
+		"/home/jarvis/.local/bin/statusbar/clock",
+		"/home/jarvis/.xprofile",
+		"/home/jarvis/.zshrc",
+		"/home/jarvis/.zshrc.save",
+		"/home/jarvis/Downloads/Scripts/NumeradorDeRifas/Rifa Sogra.docx.xml",
+		"/home/jarvis/Downloads/Scripts/NumeradorDeRifas/Rifa Sogra.xml",
+		"/home/jarvis/Downloads/Scripts/NumeradorDeRifas/Rifa Sogra.docx",
+		"/home/jarvis/Downloads/Scripts/NumeradorDeRifas/Rifa Sogra.pdf",
+		"/home/jarvis/sxhkd/sxhkdrc",
+		"/home/jarvis/i3/config",
+		"/home/jarvis/ApptsCalendarNotification.sh",
+		"/home/jarvis/TodoCalendarNotification.sh",
+		"/home/jarvis/git_src/st/config.h",
+		"/home/jarvis/.xpro",
+		"/home/jarvis/git_src/Codigos/C/PAA/Trabalho 1/build/Makefile",
+		"/home/jarvis/.config/fontconfig/fonts.conf",
+		"/home/jarvis/.profile",
+		"/home/jarvis/git_src/CCdoOeste/C/PAA/Trabalho 1/problemaDaMochila.c",
+		"/home/jarvis/git_src/CCdoOeste/C/PAA/Trabalho 1/multiplicaMatriz.c",
+		"/home/jarvis/git_src/CCdoOeste/C/PAA/Trabalho 1/fazArquivo.c",
+		"/home/jarvis/git_src/CCdoOeste/C/PAA/Trabalho 1/main.c",
+		"/home/jarvis/Downloads/temp/Prefeitura Municipal de Foz do Iguaçu.html",
+		"/home/jarvis/Downloads/temp/Prefeitura Municipal de Foz do Iguaçu.txt",
+		"/home/jarvis/Downloads/temp/Prefeitura Municipal de Foz do Iguaçu",
+		"/home/jarvis/.config/neofetch/config.conf",
+		"/etc/fonts/local.conf",
+		"/etc/fonts/fonts.conf"
+	],
+	"find":
+	{
+		"height": 43.0
+	},
+	"find_in_files":
+	{
+		"height": 111.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 44.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "board.sublime-project",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 592.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 200.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

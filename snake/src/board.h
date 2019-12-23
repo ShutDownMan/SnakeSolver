@@ -11,6 +11,6 @@
 void newBoard(gameBoard *newGame);
 
 // spawns a new fruit in a random place in the board
-void spawnfruit(gameBoard game);
+void spawnfruit(gameBoard *game);
 
 #endif

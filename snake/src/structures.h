@@ -1,11 +1,16 @@
 #ifndef STRUCTURES_H
 #define STRUCTURES_H
 
+typedef struct food {
+	int x, y;
+} Food;
+
 // the status of the whole board, and its max size
 typedef struct gameBoard {
 	int rowSize;	// x
 	int columnSize; // y
 	char **board;
+	Food food;
 } gameBoard;
 
 // the directions the snake can go, also known as up, right, down, left and NULL

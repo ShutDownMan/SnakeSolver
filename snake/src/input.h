@@ -18,4 +18,7 @@ void directionalIncrease(int *x, int *y, directions dir);
 // parses the user input and return the direction if its transverse direction
 directions userInput(directions dir);
 
+directions snakeAIInput(char dir);
+
+
 #endif

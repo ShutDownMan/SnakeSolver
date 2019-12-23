@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jarvis/git_src/SnakeSolver/snake/src/snake_path.c
+stdio.h
+-
+stdlib.h
+-
+snake_path.h
+/home/jarvis/git_src/SnakeSolver/snake/src/snake_path.h
+
+/home/jarvis/git_src/SnakeSolver/snake/src/snake_path.h
+

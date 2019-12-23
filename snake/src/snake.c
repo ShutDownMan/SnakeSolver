@@ -67,7 +67,9 @@ actions checkColision(Snake snake, gameBoard game, directions dir)
 		return MOVE;
 	case 'o':
 		return GROW;
-	default:
-		return DIE;
+	case '#':
+		if(!(x == snake.head->next->x && y == snake.head->next->y))
+			return DIE;
 	}
+	return MOVE;
 }

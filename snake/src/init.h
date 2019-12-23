@@ -3,12 +3,14 @@
 
 #include "./snake.h"
 #include "./structures.h"
+#include "snake_path.h"
+
 #include "board.h"
 #include <stdio.h>
 #include <time.h>
 
 // inits the game, start a screen and set base parameters for board and snake
-void init(gameBoard *newGame, Snake *snake);
+void init(gameBoard *newGame, Snake *snake, GridGraph **gridGraph);
 
 // starts a new snake, position it roughly at the middle of the board
 void initSnake(Snake *snake, gameBoard board);

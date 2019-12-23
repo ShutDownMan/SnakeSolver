@@ -3,25 +3,25 @@
 
 #include "snake_path.h"
 
-int main(int argc, char const *argv[]) {
+int mainTeste(int argc, char const *argv[]) {
 
 	GridGraph *gridGraph = createGridGraph(3, 4, 0);
 
-	createEdge(gridGraph, (Position){.x = 0, .y = 1}, (Position){.x = 0, .y = 0});
-	createEdge(gridGraph, (Position){.x = 0, .y = 0}, (Position){.x = 1, .y = 0});
-	createEdge(gridGraph, (Position){.x = 0, .y = 1}, (Position){.x = 1, .y = 1});
-	createEdge(gridGraph, (Position){.x = 1, .y = 1}, (Position){.x = 1, .y = 2});
-	createEdge(gridGraph, (Position){.x = 2, .y = 1}, (Position){.x = 2, .y = 0});
-	createEdge(gridGraph, (Position){.x = 1, .y = 2}, (Position){.x = 0, .y = 2});
-	createEdge(gridGraph, (Position){.x = 1, .y = 1}, (Position){.x = 2, .y = 1});
-	createEdge(gridGraph, (Position){.x = 2, .y = 1}, (Position){.x = 2, .y = 2});
-	createEdge(gridGraph, (Position){.x = 2, .y = 0}, (Position){.x = 3, .y = 0});
-	createEdge(gridGraph, (Position){.x = 2, .y = 2}, (Position){.x = 3, .y = 2});
-	createEdge(gridGraph, (Position){.x = 3, .y = 2}, (Position){.x = 3, .y = 1});
+	// createEdge(gridGraph, (Position){.x = 0, .y = 1}, (Position){.x = 0, .y = 0});
+	// createEdge(gridGraph, (Position){.x = 0, .y = 0}, (Position){.x = 1, .y = 0});
+	// createEdge(gridGraph, (Position){.x = 0, .y = 1}, (Position){.x = 1, .y = 1});
+	// createEdge(gridGraph, (Position){.x = 1, .y = 1}, (Position){.x = 1, .y = 2});
+	// createEdge(gridGraph, (Position){.x = 2, .y = 1}, (Position){.x = 2, .y = 0});
+	// createEdge(gridGraph, (Position){.x = 1, .y = 2}, (Position){.x = 0, .y = 2});
+	// createEdge(gridGraph, (Position){.x = 1, .y = 1}, (Position){.x = 2, .y = 1});
+	// createEdge(gridGraph, (Position){.x = 2, .y = 1}, (Position){.x = 2, .y = 2});
+	// createEdge(gridGraph, (Position){.x = 2, .y = 0}, (Position){.x = 3, .y = 0});
+	// createEdge(gridGraph, (Position){.x = 2, .y = 2}, (Position){.x = 3, .y = 2});
+	// createEdge(gridGraph, (Position){.x = 3, .y = 2}, (Position){.x = 3, .y = 1});
 
-	printf("Direction = %d\n", getDirection(gridGraph, (Position){.x = 3, .y = 2, .qPosition = 0}, (Position){.x = 0, .y = 2, .qPosition = 2}));
+	printf("Direction = %d\n\r", getNextDirection(gridGraph, (Position){.x = 3, .y = 2, .qPosition = 0}, (Position){.x = 0, .y = 2, .qPosition = 2}));
 
-	printf("Key = %d\n", getKeyFromDirection(1, 3));
+	printf("Key = %d\n\r", getKeyFromDirection(1, 3));
 
 	showGraph(gridGraph);
 
@@ -51,9 +51,11 @@ void createEdge(GridGraph *gridGraph, Position nodeA, Position nodeB) {
 
 	if(direction < 0) return;
 
-	// printf("nA = (%d, %d)\n", nodeA.y, nodeA.x);
-	// printf("nB = (%d, %d)\n", nodeB.y, nodeB.x);
-	// printf("D = %d/%d\n", direction, (direction + 2) % 4);
+	if(fabs(nodeA.x - nodeB.x) + fabs(nodeA.y - nodeB.y) != 1) return;
+
+	// printf("nA = (%d, %d)\n\r", nodeA.y, nodeA.x);
+	// printf("nB = (%d, %d)\n\r", nodeB.y, nodeB.x);
+	// printf("D = %d/%d\n\r", direction, (direction + 2) % 4);
 
 	if(isValidPosition(gridGraph, nodeA) && isValidPosition(gridGraph, nodeB)) {
 		gridGraph->hamNodes[nodeA.y][nodeA.x]->edges[direction] = 1;
@@ -79,13 +81,13 @@ unsigned char isValidPosition(GridGraph *gridGraph, Position pos) {
 	return (pos.x >= 0 && pos.y >= 0 && pos.x < gridGraph->width && pos.y < gridGraph->length);
 }
 
-unsigned int getDirection(GridGraph *gridGraph, Position src, Position dst) {
+unsigned int getNextDirection(GridGraph *gridGraph, Position src, Position dst) {
 	int direction;
 	PathInfo *pathInfo = createPathInfo(gridGraph->length, gridGraph->width);
 
 	calcPathRec(gridGraph, pathInfo, src, dst);
 
-	//printPathInfo(pathInfo);
+	// printPathInfo(pathInfo);
 
 	direction = pathInfo->direction[src.y][src.x];
 
@@ -96,7 +98,7 @@ unsigned int getDirection(GridGraph *gridGraph, Position src, Position dst) {
 }
 
 PathInfo *createPathInfo(unsigned int length, unsigned int width) {
-	PathInfo *newPathInfo = (PathInfo *)malloc(sizeof(pathInfo));
+	PathInfo *newPathInfo = (PathInfo *)malloc(sizeof(PathInfo));
 
 	newPathInfo->length = length;
 	newPathInfo->width = width;
@@ -129,14 +131,14 @@ unsigned int calcPathRec(GridGraph *gridGraph, PathInfo *pathInfo, Position src,
 
 	/// found node
 	if(src.x == dst.x && src.y == dst.y) {
-		// printf("FOUND!\n");
-		// printf("(%d, %d) = (%d)\n", src.x, src.y, pathInfo->parent[src.y][src.x]);
+		// printf("FOUND!\n\r");
+		// printf("(%d, %d) = (%d)\n\r", src.x, src.y, pathInfo->parent[src.y][src.x]);
 		/// Add remaining branches in the node
-		for(j = src.qPosition; j != dst.qPosition % 4; ++j %= 4) {
+		for(j = src.qPosition; j != dst.qPosition % 4; j = (j + 1) % 4) {
 			curDist += 2 * getBranchLength(gridGraph, src, (j + 1) % 4);
-			// printf("VAL[%d] = %d\n", j, getBranchLength(gridGraph, src, (j + 1) % 4));
-			// printf("qDir = %d\n", (j + 1) % 4);
-			// printf("len = %d\n", getBranchLength(gridGraph, src, (j + 1) % 4));
+			// printf("VAL[%d] = %d\n\r", j, getBranchLength(gridGraph, src, (j + 1) % 4));
+			// printf("qDir = %d\n\r", (j + 1) % 4);
+			// printf("len = %d\n\r", getBranchLength(gridGraph, src, (j + 1) % 4));
 		}
 
 		/// if current path cost less
@@ -156,11 +158,11 @@ unsigned int calcPathRec(GridGraph *gridGraph, PathInfo *pathInfo, Position src,
 	/// for each direction
 	for(i = 0; i < 4; ++i) {
 		curDist = 0;
-		// printf("edge[%d] = %d\n", i, gridGraph->hamNodes[src.y][src.x]->edges[i]);
+		// printf("edge[%d] = %d\n\r", i, gridGraph->hamNodes[src.y][src.x]->edges[i]);
 		Position nextNode = {.x = 0, .y = 0, .qPosition = 0};
 
 		/// get next node = adjacent edge given direction
-		getAdjacentNode(gridGraph, nextNode, src, i);
+		getAdjacentNode(gridGraph, &nextNode, src, i);
 		/// if adjacent node is a valid position
 		if(isValidPosition(gridGraph, nextNode)) {
 
@@ -169,8 +171,8 @@ unsigned int calcPathRec(GridGraph *gridGraph, PathInfo *pathInfo, Position src,
 
 			/// get if next node is free
 			isNextFree = isFreeNode(gridGraph, nextNode);
-			// printf("nN = (%d, %d, %d)\n", nextNode.x, nextNode.y, nextNode.qPosition);
-			// printf("isNextFree = %d\n", isNextFree);
+			// printf("nN = (%d, %d, %d)\n\r", nextNode.x, nextNode.y, nextNode.qPosition);
+			// printf("isNextFree = %d\n\r", isNextFree);
 
 			/// if current node has an edge to that direction OR next node is a free node
 			if(gridGraph->hamNodes[src.y][src.x]->edges[i] || isNextFree) {
@@ -178,8 +180,8 @@ unsigned int calcPathRec(GridGraph *gridGraph, PathInfo *pathInfo, Position src,
 				/// if next node is not tag black
 				if(pathInfo->tag[nextNode.y][nextNode.x] != BLACK) {
 					// minDir = (minDir == -1) ? i : -1;
-					// printf("tag = %d\n", gridGraph->hamNodes[nextNode.y][nextNode.x]->tag);
-					for(j = src.qPosition; j != (nextNode.qPosition + 1) % 4; ++j %= 4) {
+					// printf("tag = %d\n\r", gridGraph->hamNodes[nextNode.y][nextNode.x]->tag);
+					for(j = src.qPosition; j != (nextNode.qPosition + 1) % 4; j = (j + 1) % 4) {
 
 						curDist += 2 * (branchLen = getBranchLength(gridGraph, src, (j + 1) % 4));
 
@@ -195,9 +197,9 @@ unsigned int calcPathRec(GridGraph *gridGraph, PathInfo *pathInfo, Position src,
 					if(isNextFree)
 						pathInfo->tag[nextNode.y][nextNode.x] = WHITE;
 
-					// printf("minDist = %d\n", minDist);
+					// printf("minDist = %d\n\r", minDist);
 
-					// printf("[%d, %d]\n", curDist, minDist);
+					// printf("[%d, %d]\n\r", curDist, minDist);
 					/// if current distance is smaller
 					/// checks if distance is equal and avoids free nodes's paths
 					if(!(curDist == pathInfo->cost[src.y][src.x] && isSrcFree) && curDist <= pathInfo->cost[src.y][src.x]) {
@@ -206,8 +208,8 @@ unsigned int calcPathRec(GridGraph *gridGraph, PathInfo *pathInfo, Position src,
 						minDir = i;
 						//printPathInfo(pathInfo);
 
-						//printf("curDist = %d\n", curDist);
-						// printf("minDir = %d\n", minDir);
+						//printf("curDist = %d\n\r", curDist);
+						// printf("minDir = %d\n\r", minDir);
 						// pathInfo->parent[nextNode.y][nextNode.x] = src.y * gridGraph->width + src.x;
 						pathInfo->direction[src.y][src.x] = (firstBranch == -1) ? minDir : firstBranch;
 					}
@@ -230,7 +232,7 @@ unsigned int getBranchLength(GridGraph *gridGraph, Position src, int direction) 
 
 	if(!gridGraph->hamNodes[src.y][src.x]->edges[direction]) return 0;
 
-	getAdjacentNode(gridGraph, nextNode, src, direction);
+	getAdjacentNode(gridGraph, &nextNode, src, direction);
 
 	if(!isValidPosition(gridGraph, nextNode)) return 0;
 
@@ -254,37 +256,37 @@ unsigned int getBranchLengthRec(GridGraph *gridGraph, PathInfo *pathInfo, Positi
 	pathInfo->tag[src.y][src.x] = BLACK;
 
 	for (i = total = 0; i < 4; ++i) {
-		// printf("cN = (%d, %d)\n", src.x, src.y);
-		// printf("cP = %d -> (%d, %d)\n", gridGraph->hamNodes[src.y][src.x]->parent, src.x, src.y);
-		// printf("edge[%d] = %d\n", i, gridGraph->hamNodes[src.y][src.x]->edges[i]);
+		// printf("cN = (%d, %d)\n\r", src.x, src.y);
+		// printf("cP = %d -> (%d, %d)\n\r", gridGraph->hamNodes[src.y][src.x]->parent, src.x, src.y);
+		// printf("edge[%d] = %d\n\r", i, gridGraph->hamNodes[src.y][src.x]->edges[i]);
 		if(gridGraph->hamNodes[src.y][src.x]->edges[i]) {
-			getAdjacentNode(gridGraph, nextNode, src, i);
-			// printf("nN = (%d, %d)\n", nextNode.x, nextNode.y);
+			getAdjacentNode(gridGraph, &nextNode, src, i);
+			// printf("nN = (%d, %d)\n\r", nextNode.x, nextNode.y);
 
 			if(isValidPosition(gridGraph, nextNode) && !pathInfo->tag[nextNode.y][nextNode.x]) {
-				// printf("nN = (%d, %d)\n", nextNode.x, nextNode.y);
+				// printf("nN = (%d, %d)\n\r", nextNode.x, nextNode.y);
 				total += 1 + getBranchLengthRec(gridGraph, pathInfo, nextNode);
-				// printf("A\n");
+				// printf("A\n\r");
 			}
 		}
-		// printf("total = %d\n", total);
+		// printf("total = %d\n\r", total);
 	}
 
-	// printf("cN = (%d, %d)\n", src.x, src.y);
+	// printf("cN = (%d, %d)\n\r", src.x, src.y);
 
 	return total;
 }
 
-void getAdjacentNode(GridGraph *gridGraph, Position &adjNode, Position source, int direction) {
-	adjNode.y = source.y;
-	adjNode.x = source.x;
+void getAdjacentNode(GridGraph *gridGraph, Position *adjNode, Position source, int direction) {
+	adjNode->y = source.y;
+	adjNode->x = source.x;
 
-	adjNode.qPosition = (direction + 2) % 4;
+	adjNode->qPosition = (direction + 2) % 4;
 
 	if(direction % 2) {
-		adjNode.y += direction - 2;
+		adjNode->y += direction - 2;
 	} else {
-		adjNode.x += direction - 1;
+		adjNode->x += direction - 1;
 	}
 }
 
@@ -301,14 +303,14 @@ int isFreeNode(GridGraph *gridGraph, Position node) {
 void printPathInfo(PathInfo *pathInfo) {
 	int i, j;
 
-	printf("COST: \n");
+	printf("COST: \n\r");
 	for(i = 0; i < pathInfo->length; ++i) {
 		for(j = 0; j < pathInfo->width; ++j) {
 			printf("%5d ", pathInfo->cost[i][j]);
 		}
-		printf("\n");
+		printf("\n\r");
 	}
-	printf("DIRECTION: \n");
+	printf("DIRECTION: \n\r");
 	for(i = 0; i < pathInfo->length; ++i) {
 		for(j = 0; j < pathInfo->width; ++j) {
 			if(pathInfo->direction[i][j] != -1) {
@@ -317,7 +319,7 @@ void printPathInfo(PathInfo *pathInfo) {
 				printf("%2d ", -1);
 			}
 		}
-		printf("\n");
+		printf("\n\r");
 	}
 }
 
@@ -336,6 +338,9 @@ void deletePathInfo(PathInfo *pathInfo) {
 }
 
 char getKeyFromDirection(char qPosition, char direction) {
+	if((qPosition + 1) % 4 == direction)
+		return direction;
+
 	return (qPosition + 2) % 4;
 }
 
@@ -351,7 +356,7 @@ void showGraph(GridGraph *gridGraph) {
 				printf("   ");
 			}
 		}
-		printf("\n");
+		printf("\n\r");
 		for (j = 0; j < gridGraph->width; ++j) {
 			if(gridGraph->hamNodes[i][j]->edges[3]) { // ABR
 				printf("|   ");
@@ -359,6 +364,28 @@ void showGraph(GridGraph *gridGraph) {
 				printf("    ");
 			}
 		}
-		printf("\n");
+		printf("\n\r");
+	}
+}
+
+/// ABR
+char getQPosition(int x, int y) {
+	/// Transforms x, y coordinates into quadrant position
+	if(y % 2) {
+		return 3 - (x % 2);
+	} else {
+		return (x % 2);
+	}
+}
+
+void cleanGraph(GridGraph *gridGraph) {
+	int i, j, k;
+
+	for(i = 0; i < gridGraph->length; ++i) {
+		for(j = 0; j < gridGraph->width; ++j) {
+			for(k = 0; k < 4; ++k) {
+				gridGraph->hamNodes[i][j]->edges[k] = 0;
+			}
+		}
 	}
 }

@@ -7,17 +7,17 @@ int main(int argc, char const *argv[]) {
 
 	GridGraph *gridGraph = createGridGraph(3, 4, 0);
 
-	createEdge(gridGraph, (Position){.x = 0, .y = 1}, (Position){.x = 0, .y = 0});
-	createEdge(gridGraph, (Position){.x = 0, .y = 0}, (Position){.x = 1, .y = 0});
-	createEdge(gridGraph, (Position){.x = 0, .y = 1}, (Position){.x = 1, .y = 1});
-	createEdge(gridGraph, (Position){.x = 1, .y = 1}, (Position){.x = 1, .y = 2});
-	createEdge(gridGraph, (Position){.x = 2, .y = 1}, (Position){.x = 2, .y = 0});
-	createEdge(gridGraph, (Position){.x = 1, .y = 2}, (Position){.x = 0, .y = 2});
-	createEdge(gridGraph, (Position){.x = 1, .y = 1}, (Position){.x = 2, .y = 1});
-	createEdge(gridGraph, (Position){.x = 2, .y = 1}, (Position){.x = 2, .y = 2});
-	createEdge(gridGraph, (Position){.x = 2, .y = 0}, (Position){.x = 3, .y = 0});
-	createEdge(gridGraph, (Position){.x = 2, .y = 2}, (Position){.x = 3, .y = 2});
-	createEdge(gridGraph, (Position){.x = 3, .y = 2}, (Position){.x = 3, .y = 1});
+	// createEdge(gridGraph, (Position){.x = 0, .y = 1}, (Position){.x = 0, .y = 0});
+	// createEdge(gridGraph, (Position){.x = 0, .y = 0}, (Position){.x = 1, .y = 0});
+	// createEdge(gridGraph, (Position){.x = 0, .y = 1}, (Position){.x = 1, .y = 1});
+	// createEdge(gridGraph, (Position){.x = 1, .y = 1}, (Position){.x = 1, .y = 2});
+	// createEdge(gridGraph, (Position){.x = 2, .y = 1}, (Position){.x = 2, .y = 0});
+	// createEdge(gridGraph, (Position){.x = 1, .y = 2}, (Position){.x = 0, .y = 2});
+	// createEdge(gridGraph, (Position){.x = 1, .y = 1}, (Position){.x = 2, .y = 1});
+	// createEdge(gridGraph, (Position){.x = 2, .y = 1}, (Position){.x = 2, .y = 2});
+	// createEdge(gridGraph, (Position){.x = 2, .y = 0}, (Position){.x = 3, .y = 0});
+	// createEdge(gridGraph, (Position){.x = 2, .y = 2}, (Position){.x = 3, .y = 2});
+	// createEdge(gridGraph, (Position){.x = 3, .y = 2}, (Position){.x = 3, .y = 1});
 
 	printf("Direction = %d\n", getDirection(gridGraph, (Position){.x = 3, .y = 2, .qPosition = 0}, (Position){.x = 0, .y = 2, .qPosition = 2}));
 

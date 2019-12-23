@@ -4,6 +4,9 @@
 #define WHITE 0
 #define BLACK 1
 
+#define TRUE 1
+#define FALSE 0
+
 typedef struct hamiltonianNode {
 	unsigned char edges[4]; //< 0 left -> goes with rotation
 } HamiltonianNode;
@@ -32,18 +35,18 @@ GridGraph *createGridGraph(unsigned int length, unsigned int width, unsigned int
 
 void createEdge(GridGraph *gridGraph, Position nodeA, Position nodeB);
 
-char getDirection(Position nodeA, Position nodeB); /// ABR
+char getDirection(Position nodeA, Position nodeB);
 
 unsigned char isValidPosition(GridGraph *gridGraph, Position pos);
 
-unsigned int getDirection(GridGraph *gridGraph, Position src, Position dst);
+unsigned int getNextDirection(GridGraph *gridGraph, Position src, Position dst);
 
 PathInfo *createPathInfo(unsigned int length, unsigned int width);
 
 unsigned int calcPathRec(GridGraph *gridGraph, PathInfo *pathInfo, Position src, Position dst);
 
 /// ABD
-void getAdjacentNode(GridGraph *gridGraph, Position &adjNode, Position source, int direction);
+void getAdjacentNode(GridGraph *gridGraph, Position *adjNode, Position source, int direction);
 
 int isFreeNode(GridGraph *gridGraph, Position node);
 
@@ -58,5 +61,11 @@ void deletePathInfo(PathInfo *pathInfo);
 char getKeyFromDirection(char qPosition, char direction);
 
 void showGraph(GridGraph *gridGraph);
+
+/// ABR
+char getQPosition(int x, int y);
+
+void cleanGraph(GridGraph *gridGraph);
+
 
 #endif

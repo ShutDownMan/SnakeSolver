@@ -21,15 +21,18 @@ void newBoard(gameBoard *newGame)
 	}
 }
 
-void spawnfruit(gameBoard game)
+void spawnfruit(gameBoard *game)
 {
 	int x, y;
 	char sucess = 0;
 	while (!sucess) {
-		x = rand() % game.rowSize;
-		y = rand() % game.columnSize;
-		if (game.board[x][y] == ' ') {
-			update(x, y, game, 'o');
+		x = rand() % game->rowSize;
+		y = rand() % game->columnSize;
+		if (game->board[x][y] == ' ') {
+			game->food.x = x;
+			game->food.y = y;
+
+			update(x, y, *game, 'o');
 			sucess = true;
 		}
 	}

@@ -70,3 +70,19 @@ directions userInput(directions dir)
 		return dir;
 	}
 }
+
+directions snakeAIInput(char dir)
+{
+	switch (dir) {
+	case 0:
+		return W;
+	case 3:
+		return S;
+	case 2:
+		return E;
+	case 1:
+		return N;
+	default:
+		return INVALID;
+	}
+}

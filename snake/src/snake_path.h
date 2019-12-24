@@ -7,6 +7,8 @@
 #define TRUE 1
 #define FALSE 0
 
+#include "arraylist.h"
+
 typedef struct hamiltonianNode {
 	unsigned char edges[4]; //< 0 left -> goes with rotation
 } HamiltonianNode;
@@ -28,6 +30,9 @@ typedef struct pathInfo {
 	unsigned char **tag;
 	char **direction;
 	unsigned int **cost;
+	unsigned int **gCost;
+	unsigned int **hCost;
+	unsigned int **fCost;
 	unsigned int length, width;
 } PathInfo;
 
@@ -71,6 +76,15 @@ void generatePathInfo(GridGraph *gridGraph);
 
 void cleanPathInfo(PathInfo *pathInfo);
 
+unsigned int calcPathAStar(GridGraph *gridGraph, PathInfo *pathInfo, Position src, Position dest);
+
+void resetAStar(PathInfo *pathInfo);
+
+int equalNode(void *nodeA, void *nodeB);
+
+int compareNode(void *nodeA, void *nodeB);
+
+void printList(ArrayList *list);
 
 
 #endif

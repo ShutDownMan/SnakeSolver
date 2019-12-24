@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Snake.dir/src/arraylist.c.o"
   "CMakeFiles/Snake.dir/src/board.c.o"
   "CMakeFiles/Snake.dir/src/init.c.o"
   "CMakeFiles/Snake.dir/src/input.c.o"

@@ -70,9 +70,22 @@ CMakeFiles/Snake.dir/src/snake_path.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Snake.dir/src/snake_path.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jarvis/git_src/SnakeSolver/snake/src/snake_path.c -o CMakeFiles/Snake.dir/src/snake_path.c.s
 
+CMakeFiles/Snake.dir/src/arraylist.c.o: CMakeFiles/Snake.dir/flags.make
+CMakeFiles/Snake.dir/src/arraylist.c.o: src/arraylist.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jarvis/git_src/SnakeSolver/snake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Snake.dir/src/arraylist.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Snake.dir/src/arraylist.c.o   -c /home/jarvis/git_src/SnakeSolver/snake/src/arraylist.c
+
+CMakeFiles/Snake.dir/src/arraylist.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Snake.dir/src/arraylist.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/jarvis/git_src/SnakeSolver/snake/src/arraylist.c > CMakeFiles/Snake.dir/src/arraylist.c.i
+
+CMakeFiles/Snake.dir/src/arraylist.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Snake.dir/src/arraylist.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/jarvis/git_src/SnakeSolver/snake/src/arraylist.c -o CMakeFiles/Snake.dir/src/arraylist.c.s
+
 CMakeFiles/Snake.dir/src/snake.c.o: CMakeFiles/Snake.dir/flags.make
 CMakeFiles/Snake.dir/src/snake.c.o: src/snake.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jarvis/git_src/SnakeSolver/snake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Snake.dir/src/snake.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jarvis/git_src/SnakeSolver/snake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Snake.dir/src/snake.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Snake.dir/src/snake.c.o   -c /home/jarvis/git_src/SnakeSolver/snake/src/snake.c
 
 CMakeFiles/Snake.dir/src/snake.c.i: cmake_force
@@ -85,7 +98,7 @@ CMakeFiles/Snake.dir/src/snake.c.s: cmake_force
 
 CMakeFiles/Snake.dir/src/screen.c.o: CMakeFiles/Snake.dir/flags.make
 CMakeFiles/Snake.dir/src/screen.c.o: src/screen.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jarvis/git_src/SnakeSolver/snake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Snake.dir/src/screen.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jarvis/git_src/SnakeSolver/snake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Snake.dir/src/screen.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Snake.dir/src/screen.c.o   -c /home/jarvis/git_src/SnakeSolver/snake/src/screen.c
 
 CMakeFiles/Snake.dir/src/screen.c.i: cmake_force
@@ -98,7 +111,7 @@ CMakeFiles/Snake.dir/src/screen.c.s: cmake_force
 
 CMakeFiles/Snake.dir/src/input.c.o: CMakeFiles/Snake.dir/flags.make
 CMakeFiles/Snake.dir/src/input.c.o: src/input.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jarvis/git_src/SnakeSolver/snake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Snake.dir/src/input.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jarvis/git_src/SnakeSolver/snake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Snake.dir/src/input.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Snake.dir/src/input.c.o   -c /home/jarvis/git_src/SnakeSolver/snake/src/input.c
 
 CMakeFiles/Snake.dir/src/input.c.i: cmake_force
@@ -111,7 +124,7 @@ CMakeFiles/Snake.dir/src/input.c.s: cmake_force
 
 CMakeFiles/Snake.dir/src/main.c.o: CMakeFiles/Snake.dir/flags.make
 CMakeFiles/Snake.dir/src/main.c.o: src/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jarvis/git_src/SnakeSolver/snake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Snake.dir/src/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jarvis/git_src/SnakeSolver/snake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/Snake.dir/src/main.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Snake.dir/src/main.c.o   -c /home/jarvis/git_src/SnakeSolver/snake/src/main.c
 
 CMakeFiles/Snake.dir/src/main.c.i: cmake_force
@@ -124,7 +137,7 @@ CMakeFiles/Snake.dir/src/main.c.s: cmake_force
 
 CMakeFiles/Snake.dir/src/board.c.o: CMakeFiles/Snake.dir/flags.make
 CMakeFiles/Snake.dir/src/board.c.o: src/board.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jarvis/git_src/SnakeSolver/snake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/Snake.dir/src/board.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jarvis/git_src/SnakeSolver/snake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/Snake.dir/src/board.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Snake.dir/src/board.c.o   -c /home/jarvis/git_src/SnakeSolver/snake/src/board.c
 
 CMakeFiles/Snake.dir/src/board.c.i: cmake_force
@@ -137,7 +150,7 @@ CMakeFiles/Snake.dir/src/board.c.s: cmake_force
 
 CMakeFiles/Snake.dir/src/init.c.o: CMakeFiles/Snake.dir/flags.make
 CMakeFiles/Snake.dir/src/init.c.o: src/init.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jarvis/git_src/SnakeSolver/snake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/Snake.dir/src/init.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jarvis/git_src/SnakeSolver/snake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/Snake.dir/src/init.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Snake.dir/src/init.c.o   -c /home/jarvis/git_src/SnakeSolver/snake/src/init.c
 
 CMakeFiles/Snake.dir/src/init.c.i: cmake_force
@@ -151,6 +164,7 @@ CMakeFiles/Snake.dir/src/init.c.s: cmake_force
 # Object files for target Snake
 Snake_OBJECTS = \
 "CMakeFiles/Snake.dir/src/snake_path.c.o" \
+"CMakeFiles/Snake.dir/src/arraylist.c.o" \
 "CMakeFiles/Snake.dir/src/snake.c.o" \
 "CMakeFiles/Snake.dir/src/screen.c.o" \
 "CMakeFiles/Snake.dir/src/input.c.o" \
@@ -162,6 +176,7 @@ Snake_OBJECTS = \
 Snake_EXTERNAL_OBJECTS =
 
 Snake: CMakeFiles/Snake.dir/src/snake_path.c.o
+Snake: CMakeFiles/Snake.dir/src/arraylist.c.o
 Snake: CMakeFiles/Snake.dir/src/snake.c.o
 Snake: CMakeFiles/Snake.dir/src/screen.c.o
 Snake: CMakeFiles/Snake.dir/src/input.c.o
@@ -172,7 +187,7 @@ Snake: CMakeFiles/Snake.dir/build.make
 Snake: /usr/lib/libcurses.so
 Snake: /usr/lib/libform.so
 Snake: CMakeFiles/Snake.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jarvis/git_src/SnakeSolver/snake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable Snake"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jarvis/git_src/SnakeSolver/snake/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking C executable Snake"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Snake.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

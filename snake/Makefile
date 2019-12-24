@@ -123,6 +123,33 @@ Snake/fast:
 	$(MAKE) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/build
 .PHONY : Snake/fast
 
+src/arraylist.o: src/arraylist.c.o
+
+.PHONY : src/arraylist.o
+
+# target to build an object file
+src/arraylist.c.o:
+	$(MAKE) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/arraylist.c.o
+.PHONY : src/arraylist.c.o
+
+src/arraylist.i: src/arraylist.c.i
+
+.PHONY : src/arraylist.i
+
+# target to preprocess a source file
+src/arraylist.c.i:
+	$(MAKE) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/arraylist.c.i
+.PHONY : src/arraylist.c.i
+
+src/arraylist.s: src/arraylist.c.s
+
+.PHONY : src/arraylist.s
+
+# target to generate assembly for a file
+src/arraylist.c.s:
+	$(MAKE) -f CMakeFiles/Snake.dir/build.make CMakeFiles/Snake.dir/src/arraylist.c.s
+.PHONY : src/arraylist.c.s
+
 src/board.o: src/board.c.o
 
 .PHONY : src/board.o
@@ -321,6 +348,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Snake"
 	@echo "... edit_cache"
+	@echo "... src/arraylist.o"
+	@echo "... src/arraylist.i"
+	@echo "... src/arraylist.s"
 	@echo "... src/board.o"
 	@echo "... src/board.i"
 	@echo "... src/board.s"

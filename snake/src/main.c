@@ -58,7 +58,7 @@ void mainLoop(gameBoard game, Snake *snake, GridGraph *gridGraph)
 		generateGridGraph(gridGraph, snake);
 
 		// scanf("%*d");
-		move(15, 0);
+		move(30, 0);
 		showGraph(gridGraph);
 		move(0, 0);
 

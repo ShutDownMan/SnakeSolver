@@ -22,12 +22,14 @@ void moveSnake(Snake *snake, directions dir, gameBoard board)
 	directionalIncrease(&x, &y, dir);
 	update(x, y, board, '#');
 
+	if(!(x == snake->head->next->x && y == snake->head->next->y)) {
+		// clear where the tail used to be, since the snake moved away from
+		// there
+		update(snake->head->next->x, snake->head->next->y, board, ' ');
+	}
+
 	// grab the tail of the snake
 	snake->head = snake->head->next;
-
-	// clear where the tail used to be, since the snake moved away from
-	// there
-	update(snake->head->x, snake->head->y, board, ' ');
 
 	// give the tail the new head coordinate, effectively making it the new
 	// head
@@ -68,8 +70,11 @@ actions checkColision(Snake snake, gameBoard game, directions dir)
 	case 'o':
 		return GROW;
 	case '#':
-		if(!(x == snake.head->next->x && y == snake.head->next->y))
+		if(!(x == snake.head->next->x && y == snake.head->next->y)) {
 			return DIE;
+		}
+		return MOVE;
+	default:
+		return DIE;
 	}
-	return MOVE;
 }

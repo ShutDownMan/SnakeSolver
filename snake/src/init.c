@@ -8,16 +8,16 @@ void initSnake(Snake *snake, gameBoard board)
 	int middleX = board.rowSize / 2;
 	int middleY = board.columnSize / 2;
 
-	snake->head = newSegment(3, 4, NULL, board);
+	snake->head = newSegment(3, 5, NULL, board);
 
 	// so after the head element is created, we create the one that points
 	// at it, which is the body of the snake
 	SnakeSegment *body =
-	    newSegment(2, 4, snake->head, board);
+	    newSegment(2, 5, snake->head, board);
 
 	// once the body is created, we can create the tail element, with the
 	// head pointing to it, and it pointing at the body
-	snake->head->next = newSegment(1, 4, body, board);
+	snake->head->next = newSegment(1, 5, body, board);
 
 	// createEdge(gridGraph, (Position){.x=middleX, .y=middleY}, (Position){.x=middleX+1, .y=middleY});
 	// createEdge(gridGraph, (Position){.x=middleX+1, .y=middleY}, (Position){.x=middleX+2, .y=middleY});
@@ -40,10 +40,11 @@ void init(gameBoard *newGame, Snake *snake, GridGraph **gridGraph)
 	// gets the current terminal size
 	// getmaxyx(stdscr, newGame->columnSize, newGame->rowSize);
 
-	newGame->columnSize = 8;
-	newGame->rowSize = 8;
+	newGame->columnSize = 10;
+	newGame->rowSize = 18;
 
 	*gridGraph = createGridGraph((newGame->columnSize-2)/2, (newGame->rowSize-2)/2, 0);
+	generatePathInfo(*gridGraph);
 
 	// initializes body, fruit and snake
 	newBoard(newGame);

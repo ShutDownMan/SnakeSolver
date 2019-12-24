@@ -1,14 +1,21 @@
-#include <stdio.h>
+// #include <stdio.h>
+#include <curses.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "snake_path.h"
 
-int mainTeste(int argc, char const *argv[]) {
 
-	GridGraph *gridGraph = createGridGraph(3, 4, 0);
+PathInfo *branchLengthPathInfo;
+
+PathInfo *directionPathInfo;
+
+int maina(int argc, char const *argv[]) {
+
+	GridGraph *gridGraph = createGridGraph(3, 3, 0);
 
 	// createEdge(gridGraph, (Position){.x = 0, .y = 1}, (Position){.x = 0, .y = 0});
-	// createEdge(gridGraph, (Position){.x = 0, .y = 0}, (Position){.x = 1, .y = 0});
+	// createEdge(gridGraph, (Position){.x = 0, .y = 0}, (Position){.x = 0, .y = 1});
 	// createEdge(gridGraph, (Position){.x = 0, .y = 1}, (Position){.x = 1, .y = 1});
 	// createEdge(gridGraph, (Position){.x = 1, .y = 1}, (Position){.x = 1, .y = 2});
 	// createEdge(gridGraph, (Position){.x = 2, .y = 1}, (Position){.x = 2, .y = 0});
@@ -19,9 +26,12 @@ int mainTeste(int argc, char const *argv[]) {
 	// createEdge(gridGraph, (Position){.x = 2, .y = 2}, (Position){.x = 3, .y = 2});
 	// createEdge(gridGraph, (Position){.x = 3, .y = 2}, (Position){.x = 3, .y = 1});
 
-	printf("Direction = %d\n\r", getNextDirection(gridGraph, (Position){.x = 3, .y = 2, .qPosition = 0}, (Position){.x = 0, .y = 2, .qPosition = 2}));
+	createEdge(gridGraph, (Position){.x = 1, .y = 1}, (Position){.x = 1, .y = 2});
+	createEdge(gridGraph, (Position){.x = 1, .y = 1}, (Position){.x = 2, .y = 1});
+	createEdge(gridGraph, (Position){.x = 2, .y = 1}, (Position){.x = 2, .y = 2});
+	printf("Direction = %d\n\r", getNextDirection(gridGraph, (Position){.x = 1, .y = 1, .qPosition = 2}, (Position){.x = 1, .y = 0, .qPosition = 0}));
 
-	printf("Key = %d\n\r", getKeyFromDirection(1, 3));
+	// printf("Key = %d\n\r", getKeyFromDirection(1, 3));
 
 	showGraph(gridGraph);
 
@@ -47,11 +57,14 @@ GridGraph *createGridGraph(unsigned int length, unsigned int width, unsigned int
 }
 
 void createEdge(GridGraph *gridGraph, Position nodeA, Position nodeB) {
-	unsigned char direction = getDirection(nodeA, nodeB);
+	char direction = getDirection(nodeA, nodeB);
 
 	if(direction < 0) return;
 
-	if(fabs(nodeA.x - nodeB.x) + fabs(nodeA.y - nodeB.y) != 1) return;
+	if(fabs(nodeA.x*1.0 - nodeB.x) + fabs(nodeA.y*1.0 - nodeB.y) > 1.0) return;
+
+	// mvprintw(30, 0, "\r(%2d, %2d) => (%2d, %2d)\n", nodeA.x, nodeA.y, nodeB.x, nodeB.y);
+	// mvprintw(31, 0, "\rf = %g\n", fabs(nodeA.x*1.0 - nodeB.x) + fabs(nodeA.y*1.0 - nodeB.y));
 
 	// printf("nA = (%d, %d)\n\r", nodeA.y, nodeA.x);
 	// printf("nB = (%d, %d)\n\r", nodeB.y, nodeB.x);
@@ -81,18 +94,36 @@ unsigned char isValidPosition(GridGraph *gridGraph, Position pos) {
 	return (pos.x >= 0 && pos.y >= 0 && pos.x < gridGraph->width && pos.y < gridGraph->length);
 }
 
+void generatePathInfo(GridGraph *gridGraph) {
+	directionPathInfo = createPathInfo(gridGraph->length, gridGraph->width);
+	branchLengthPathInfo = createPathInfo(gridGraph->length, gridGraph->width);
+}
+
+void cleanPathInfo(PathInfo *pathInfo) {
+	int i, j, k;
+
+	for(i = 0; i < pathInfo->length; ++i) {
+		for(j = 0; j < pathInfo->width; ++j) {
+			pathInfo->tag[i][j] = 0;
+			pathInfo->direction[i][j] = -1;
+			pathInfo->cost[i][j] = 0xFFFF;
+		}
+	}
+}
+
 unsigned int getNextDirection(GridGraph *gridGraph, Position src, Position dst) {
 	int direction;
-	PathInfo *pathInfo = createPathInfo(gridGraph->length, gridGraph->width);
 
-	calcPathRec(gridGraph, pathInfo, src, dst);
+	directionPathInfo->tag[src.y][src.x] = BLACK;
 
-	// printPathInfo(pathInfo);
+	calcPathRec(gridGraph, directionPathInfo, src, dst);
 
-	direction = pathInfo->direction[src.y][src.x];
+	// printPathInfo(directionPathInfo);
 
-	/// delete pathInfo
-	deletePathInfo(pathInfo);
+	direction = directionPathInfo->direction[src.y][src.x];
+
+	/// clean directionPathInfo
+	cleanPathInfo(directionPathInfo);
 
 	return direction;
 }
@@ -122,12 +153,13 @@ PathInfo *createPathInfo(unsigned int length, unsigned int width) {
 }
 
 unsigned int calcPathRec(GridGraph *gridGraph, PathInfo *pathInfo, Position src, Position dst) {
-	int i, j, minDir, curDist, branchLen;
-	// int minDist;
+	int i, j, minDir, curDist, branchLen, branchesLen;
 	char isSrcFree, isNextFree, firstBranch;
 
-	curDist = 0;
+	curDist = branchLen = branchesLen = 0;
 	minDir = firstBranch = -1;
+
+	isSrcFree = isFreeNode(gridGraph, src);
 
 	/// found node
 	if(src.x == dst.x && src.y == dst.y) {
@@ -157,6 +189,7 @@ unsigned int calcPathRec(GridGraph *gridGraph, PathInfo *pathInfo, Position src,
 	// pathInfo->cost[src.y][src.x] = 0;
 	/// for each direction
 	for(i = 0; i < 4; ++i) {
+		firstBranch = -1;
 		curDist = 0;
 		// printf("edge[%d] = %d\n\r", i, gridGraph->hamNodes[src.y][src.x]->edges[i]);
 		Position nextNode = {.x = 0, .y = 0, .qPosition = 0};
@@ -171,7 +204,6 @@ unsigned int calcPathRec(GridGraph *gridGraph, PathInfo *pathInfo, Position src,
 
 			/// get if next node is free
 			isNextFree = isFreeNode(gridGraph, nextNode);
-			// printf("nN = (%d, %d, %d)\n\r", nextNode.x, nextNode.y, nextNode.qPosition);
 			// printf("isNextFree = %d\n\r", isNextFree);
 
 			/// if current node has an edge to that direction OR next node is a free node
@@ -179,20 +211,35 @@ unsigned int calcPathRec(GridGraph *gridGraph, PathInfo *pathInfo, Position src,
 
 				/// if next node is not tag black
 				if(pathInfo->tag[nextNode.y][nextNode.x] != BLACK) {
+					branchesLen = 0;
 					// minDir = (minDir == -1) ? i : -1;
 					// printf("tag = %d\n\r", gridGraph->hamNodes[nextNode.y][nextNode.x]->tag);
-					for(j = src.qPosition; j != (nextNode.qPosition + 1) % 4; j = (j + 1) % 4) {
+					for(j = (src.qPosition + 1) % 4; j != getDirection(src, nextNode); j = (j + 1) % 4) {
 
-						curDist += 2 * (branchLen = getBranchLength(gridGraph, src, (j + 1) % 4));
+						branchesLen += 2 * (branchLen = getBranchLength(gridGraph, src, j));
 
-						if(branchLen && firstBranch == -1 && gridGraph->hamNodes[src.y][src.x]->edges[i])
-							firstBranch = (j + 1) % 4;
+						if(branchLen && firstBranch == -1) {
+							firstBranch = j;
+							// printf("\rFIRST BRANCH %d\n\r", firstBranch);
+						}
+						// if(src.x == 1 && src.y == 1) {
+						// 	printf("j = %2d\n", j);
+						// }
 					}
 
 					pathInfo->tag[nextNode.y][nextNode.x] = BLACK;
 
 					/// get the distance recursively depth first
-					curDist += 1 + calcPathRec(gridGraph, pathInfo, nextNode, dst);
+					curDist = 1 + branchesLen + calcPathRec(gridGraph, pathInfo, nextNode, dst);
+
+					// if(src.x == 1 && src.y == 1) {
+					// 	printf("\rcN = (%d, %d, %d)\n\r", src.x, src.y, src.qPosition);
+					// 	printf("\rnN = (%d, %d, %d)\n\r", nextNode.x, nextNode.y, nextNode.qPosition);
+					// 	printf("\rFIRSTBRANCH %d\n\r", firstBranch);
+					// 	printf("\rBRANCHESLEN %d\n\r", branchesLen);
+					// 	printf("\rCURDIST %d\n\r", curDist);
+					// 	printf("\r---------------------------\n\r");
+					// }
 
 					if(isNextFree)
 						pathInfo->tag[nextNode.y][nextNode.x] = WHITE;
@@ -208,8 +255,10 @@ unsigned int calcPathRec(GridGraph *gridGraph, PathInfo *pathInfo, Position src,
 						minDir = i;
 						//printPathInfo(pathInfo);
 
-						//printf("curDist = %d\n\r", curDist);
-						// printf("minDir = %d\n\r", minDir);
+						// if(!isSrcFree) {
+						// 	printf("curDist = %d\n\r", curDist);
+						// 	printf("minDir = %d\n\r", minDir);
+						// }
 						// pathInfo->parent[nextNode.y][nextNode.x] = src.y * gridGraph->width + src.x;
 						pathInfo->direction[src.y][src.x] = (firstBranch == -1) ? minDir : firstBranch;
 					}
@@ -228,7 +277,6 @@ unsigned int calcPathRec(GridGraph *gridGraph, PathInfo *pathInfo, Position src,
 unsigned int getBranchLength(GridGraph *gridGraph, Position src, int direction) {
 	unsigned int total = 0;
 	Position nextNode = {.x = 0, .y = 0, .qPosition = 0};
-	PathInfo *pathInfo = NULL;
 
 	if(!gridGraph->hamNodes[src.y][src.x]->edges[direction]) return 0;
 
@@ -236,15 +284,13 @@ unsigned int getBranchLength(GridGraph *gridGraph, Position src, int direction) 
 
 	if(!isValidPosition(gridGraph, nextNode)) return 0;
 
-	pathInfo = createPathInfo(gridGraph->length, gridGraph->width);
+	branchLengthPathInfo->tag[src.y][src.x] = BLACK;
 
-	pathInfo->tag[src.y][src.x] = BLACK;
-
-	total = 1 + getBranchLengthRec(gridGraph, pathInfo, nextNode);
+	total = 1 + getBranchLengthRec(gridGraph, branchLengthPathInfo, nextNode);
 
 	// untagGraph(gridGraph);
 
-	deletePathInfo(pathInfo);
+	cleanPathInfo(branchLengthPathInfo);
 
 	return total;
 }
@@ -349,22 +395,22 @@ void showGraph(GridGraph *gridGraph) {
 
 	for (i = 0; i < gridGraph->length; ++i) {
 		for (j = 0; j < gridGraph->width; ++j) {
-			printf("#");
+			printw("#");
 			if(gridGraph->hamNodes[i][j]->edges[2]) { // ABR
-				printf("---");
+				printw("---");
 			} else {
-				printf("   ");
+				printw("   ");
 			}
 		}
-		printf("\n\r");
+		printw("\n\r");
 		for (j = 0; j < gridGraph->width; ++j) {
 			if(gridGraph->hamNodes[i][j]->edges[3]) { // ABR
-				printf("|   ");
+				printw("|   ");
 			} else {
-				printf("    ");
+				printw("    ");
 			}
 		}
-		printf("\n\r");
+		printw("\n\r");
 	}
 }
 

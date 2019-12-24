@@ -67,5 +67,10 @@ char getQPosition(int x, int y);
 
 void cleanGraph(GridGraph *gridGraph);
 
+void generatePathInfo(GridGraph *gridGraph);
+
+void cleanPathInfo(PathInfo *pathInfo);
+
+
 
 #endif

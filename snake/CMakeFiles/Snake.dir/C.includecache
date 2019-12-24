@@ -7,9 +7,11 @@
 #IncludeRegexTransform: 
 
 /home/jarvis/git_src/SnakeSolver/snake/src/snake_path.c
-stdio.h
+curses.h
 -
 stdlib.h
+-
+math.h
 -
 snake_path.h
 /home/jarvis/git_src/SnakeSolver/snake/src/snake_path.h

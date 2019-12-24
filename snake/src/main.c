@@ -81,7 +81,7 @@ void mainLoop(gameBoard game, Snake *snake, GridGraph *gridGraph)
 		// 	usleep(DELAY);
 		// }
 		// dir = userInput(dir);
-		// usleep(DELAY);
+		usleep(DELAY);
 
 		switch (checkColision(*snake, game, dir)) {
 			case DIE:

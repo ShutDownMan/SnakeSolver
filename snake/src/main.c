@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define DELAY 70000
+#define DELAY 7000
 
 void generateGridGraph(GridGraph *gridGraph, Snake *snake) {
 	int i, j, k;
@@ -58,7 +58,7 @@ void mainLoop(gameBoard game, Snake *snake, GridGraph *gridGraph)
 		generateGridGraph(gridGraph, snake);
 
 		// scanf("%*d");
-		move(30, 0);
+		move(28, 0);
 		showGraph(gridGraph);
 		move(0, 0);
 

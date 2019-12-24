@@ -16,10 +16,6 @@
 stdlib.h
 -
 
-/home/jarvis/git_src/SnakeSolver/snake/src/init.c
-./init.h
-/home/jarvis/git_src/SnakeSolver/snake/src/init.h
-
 /home/jarvis/git_src/SnakeSolver/snake/src/init.h
 ./snake.h
 /home/jarvis/git_src/SnakeSolver/snake/src/snake.h
@@ -77,16 +73,6 @@ input.h
 /home/jarvis/git_src/SnakeSolver/snake/src/input.h
 stdlib.h
 -
-
-/home/jarvis/git_src/SnakeSolver/snake/src/snake_path.c
-curses.h
--
-stdlib.h
--
-math.h
--
-snake_path.h
-/home/jarvis/git_src/SnakeSolver/snake/src/snake_path.h
 
 /home/jarvis/git_src/SnakeSolver/snake/src/snake_path.h
 arraylist.h

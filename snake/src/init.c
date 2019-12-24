@@ -40,7 +40,7 @@ void init(gameBoard *newGame, Snake *snake, GridGraph **gridGraph)
 	// gets the current terminal size
 	// getmaxyx(stdscr, newGame->columnSize, newGame->rowSize);
 
-	newGame->columnSize = 10;
+	newGame->columnSize = 12;
 	newGame->rowSize = 18;
 
 	*gridGraph = createGridGraph((newGame->columnSize-2)/2, (newGame->rowSize-2)/2, 0);
